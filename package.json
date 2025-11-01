@@ -1,0 +1,30 @@
+{
+  "name": "sweet-shop-system",
+  "version": "1.0.0",
+  "description": "A Sweet Shop Management System built with TDD approach",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start": "node src/app.js"
+  },
+  "keywords": ["sweet-shop", "inventory", "tdd"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/app.js"
+    ]
+  }
+}
