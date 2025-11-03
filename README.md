@@ -1,4 +1,4 @@
-# Sweet Shop Management System 🍬
+# Kata Sweet Shop Management System 🍬
 
 A comprehensive inventory management system for a sweet shop, built using Test-Driven Development (TDD) methodology. This project includes a complete backend API with PostgreSQL database and a beautiful React-based user interface.
 
