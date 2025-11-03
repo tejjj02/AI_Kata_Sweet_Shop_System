@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍬 Sweet Shop Management</title>
+    <title>� Kata Sweet Shop System</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3e2723 0%, #5d4037 50%, #6d4c41 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -51,17 +51,17 @@
         }
 
         .card {
-            background: white;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .card h2 {
-            color: #667eea;
+            color: #4e342e;
             margin-bottom: 20px;
             font-size: 1.5em;
-            border-bottom: 2px solid #667eea;
+            border-bottom: 3px solid #8d6e63;
             padding-bottom: 10px;
         }
 
@@ -89,7 +89,7 @@
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #8d6e63;
         }
 
         .btn {
@@ -105,13 +105,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6d4c41 0%, #4e342e 100%);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(109, 76, 65, 0.4);
         }
 
         .btn-success {
@@ -136,30 +136,32 @@
         }
 
         .sweet-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #d7ccc8 0%, #bcaaa4 100%);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s;
+            border: 2px solid #8d6e63;
         }
 
         .sweet-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .sweet-card h3 {
-            color: #333;
+            color: #3e2723;
             margin-bottom: 10px;
             font-size: 1.3em;
         }
 
         .sweet-info {
             margin: 10px 0;
-            color: #666;
+            color: #4e342e;
         }
 
         .sweet-info strong {
-            color: #333;
+            color: #3e2723;
         }
 
         .category-badge {
@@ -172,18 +174,18 @@
         }
 
         .category-chocolate {
-            background: #8B4513;
-            color: white;
+            background: #5d4037;
+            color: #fff3e0;
         }
 
         .category-candy {
-            background: #FF69B4;
+            background: #ff6f00;
             color: white;
         }
 
         .category-pastry {
-            background: #FFD700;
-            color: #333;
+            background: #f57c00;
+            color: white;
         }
 
         .stock-status {
@@ -242,7 +244,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #667eea;
+            color: #fff8e1;
             font-size: 1.2em;
         }
 
@@ -254,21 +256,22 @@
         }
 
         .stat-card {
-            background: white;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            border: 2px solid #8d6e63;
         }
 
         .stat-card h3 {
-            color: #667eea;
+            color: #4e342e;
             font-size: 2em;
             margin-bottom: 5px;
         }
 
         .stat-card p {
-            color: #666;
+            color: #5d4037;
             font-weight: 600;
         }
 
@@ -448,7 +451,7 @@
             return (
                 <div className="container">
                     <div className="header">
-                        <h1>🍬 Sweet Shop Management</h1>
+                        <h1>� Kata Sweet Shop System</h1>
                         <p>Manage your sweet inventory with ease</p>
                     </div>
 
@@ -472,7 +475,7 @@
                             <p>Out of Stock</p>
                         </div>
                         <div className="stat-card">
-                            <h3>${stats.totalValue}</h3>
+                            <h3>₹{stats.totalValue}</h3>
                             <p>Total Value</p>
                         </div>
                     </div>
@@ -505,7 +508,7 @@
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label>Price ($)</label>
+                                    <label>Price (₹)</label>
                                     <input
                                         type="number"
                                         step="0.01"
@@ -561,7 +564,7 @@
                                         </span>
                                         <h3>{sweet.name}</h3>
                                         <div className="sweet-info">
-                                            <strong>Price:</strong> ${sweet.price}
+                                            <strong>Price:</strong> ₹{sweet.price}
                                         </div>
                                         <div className="sweet-info">
                                             <strong>Quantity:</strong> {sweet.quantity}
