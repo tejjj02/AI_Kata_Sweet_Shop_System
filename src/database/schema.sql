@@ -1,7 +1,19 @@
 -- Sweet Shop Database Schema
 
--- Drop table if exists (for fresh setup)
+-- Drop tables if exists (for fresh setup)
 DROP TABLE IF EXISTS sweets;
+DROP TABLE IF EXISTS users;
+
+-- Create users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create index for faster user lookups
+CREATE INDEX idx_users_email ON users(email);
 
 -- Create sweets table
 CREATE TABLE sweets (

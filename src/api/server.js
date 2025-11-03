@@ -6,6 +6,8 @@
 const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
+const authRoutes = require('./authRoutes');
+const authMiddleware = require('./authMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,8 +23,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// API Routes
-app.use('/api', routes);
+// Authentication Routes (public)
+app.use('/api/auth', authRoutes);
+
+// API Routes (protected with authentication)
+app.use('/api', authMiddleware, routes);
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -30,24 +35,29 @@ app.get('/', (req, res) => {
     message: '🍬 Welcome to Sweet Shop API',
     version: '1.0.0',
     endpoints: {
+      authentication: {
+        'POST /api/auth/register': 'Register new user',
+        'POST /api/auth/login': 'Login user'
+      },
       sweets: {
-        'GET /api/sweets': 'Get all sweets',
-        'GET /api/sweets/:id': 'Get sweet by ID',
-        'POST /api/sweets': 'Create new sweet',
-        'PUT /api/sweets/:id': 'Update sweet',
-        'DELETE /api/sweets/:id': 'Delete sweet'
+        'GET /api/sweets': 'Get all sweets (requires auth)',
+        'GET /api/sweets/:id': 'Get sweet by ID (requires auth)',
+        'POST /api/sweets': 'Create new sweet (requires auth)',
+        'PUT /api/sweets/:id': 'Update sweet (requires auth)',
+        'DELETE /api/sweets/:id': 'Delete sweet (requires auth)'
       },
       search: {
-        'GET /api/sweets/search/category/:category': 'Search by category',
-        'GET /api/sweets/search/name/:name': 'Search by name',
-        'GET /api/sweets/search/price?min=X&max=Y': 'Search by price range'
+        'GET /api/sweets/search/category/:category': 'Search by category (requires auth)',
+        'GET /api/sweets/search/name/:name': 'Search by name (requires auth)',
+        'GET /api/sweets/search/price?min=X&max=Y': 'Search by price range (requires auth)'
       },
       inventory: {
-        'POST /api/sweets/:id/purchase': 'Purchase sweet (decrease quantity)',
-        'POST /api/sweets/:id/restock': 'Restock sweet (increase quantity)',
-        'GET /api/sweets/:id/stock': 'Check stock status'
+        'POST /api/sweets/:id/purchase': 'Purchase sweet (requires auth)',
+        'POST /api/sweets/:id/restock': 'Restock sweet (requires auth)',
+        'GET /api/sweets/:id/stock': 'Check stock status (requires auth)'
       }
-    }
+    },
+    note: 'All /api/sweets endpoints require Bearer token authentication'
   });
 });
 
