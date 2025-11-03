@@ -8,17 +8,25 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "start": "node src/app.js",
-    "setup-db": "node setup-database.js"
+    "setup-db": "node setup-database.js",
+    "api": "node src/api/server.js",
+    "dev": "node src/api/server.js"
   },
-  "keywords": ["sweet-shop", "inventory", "tdd"],
+  "keywords": [
+    "sweet-shop",
+    "inventory",
+    "tdd"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0"
   },
   "dependencies": {
-    "pg": "^8.11.3",
-    "dotenv": "^16.3.1"
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^5.1.0",
+    "pg": "^8.11.3"
   },
   "jest": {
     "testEnvironment": "node",
