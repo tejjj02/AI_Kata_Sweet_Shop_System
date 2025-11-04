@@ -1,4 +1,4 @@
-# PostgreSQL Setup Guide for Sweet Shop System
+# PostgreSQL Database Setup Guide for Sweet Shop System
 
 ## Installation Complete? Great! Now let's create the database:
 
