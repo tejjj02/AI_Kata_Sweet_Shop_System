@@ -1,4 +1,4 @@
-# 🍬 Sweet Shop React UI
+# 🍬 Kata Sweet Shop React UI
 
 ## Quick Start
 
