@@ -2,11 +2,9 @@
  * Database Setup Script
  * This script creates the database tables and inserts sample data
  */
-
 const fs = require('fs');
 const path = require('path');
 const { pool, closePool } = require('./src/database/connection');
-
 async function setupDatabase() {
   try {
     console.log('🔧 Starting database setup...\n');
