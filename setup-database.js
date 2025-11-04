@@ -9,7 +9,7 @@ async function setupDatabase() {
   try {
     console.log('🔧 Starting database setup...\n');
 
-    // Read the schema file
+    // Read schema file
     const schemaPath = path.join(__dirname, 'src', 'database', 'schema.sql');
     const schema = fs.readFileSync(schemaPath, 'utf8');
 
